@@ -1,12 +1,14 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client'
+import React from "react";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Start from './pages/start.jsx';
+import Start from "./pages/Start";
+import Playing from "./pages/Playing";
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Start />} />
+      <Route path="/playing" element={<Playing />} />
     </Routes>
-  </BrowserRouter>
-)
+  </BrowserRouter>,
+);
