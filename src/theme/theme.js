@@ -37,11 +37,12 @@ const theme = {
   typography: {
     fontFamily: '"Atkinson Hyperlegible", sans-serif',
     fontSize: {
-      h1: "48px",
-      h2: "32px",
-      h3: "24px",
-      body: "16px",
-      small: "14px",
+      h1: "3rem",
+      h2: "2rem",
+      h3: "1.5rem",
+      body: "1rem",
+      small: "0.875rem",
+      button: "2rem",
     },
     fontWeight: {
       regular: 400,
@@ -59,13 +60,15 @@ const theme = {
       idle: css`
         background-color: #f0a214;
         color: white;
-        border-radius: 25px;
+        border-radius: 24px;
         padding: 12px 24px;
         font-weight: bold;
+        font-size: 2rem;
         border: none;
         cursor: pointer;
         transition: background-color 0.3s;
         font-family: "Atkinson Hyperlegible", sans-serif;
+        cursor: pointer;
         &:hover {
           background-color: #e59400;
         }
@@ -85,9 +88,10 @@ const theme = {
       idle: css`
         background-color: #bcbcb9;
         color: #394459;
-        border-radius: 25px;
+        border-radius: 24px;
         padding: 8px 16px;
         font-weight: bold;
+        font-size: 2rem;
         border: none;
         cursor: pointer;
         transition: background-color 0.3s;
@@ -99,7 +103,7 @@ const theme = {
       hover: css`
         background-color: #3979da;
         color: white;
-        border-radius: 25px;
+        border-radius: 24px;
         padding: 8px 16px;
         font-weight: bold;
         border: none;
@@ -111,7 +115,7 @@ const theme = {
       active: css`
         background-color: #394459;
         color: white;
-        border-radius: 25px;
+        border-radius: 24px;
         padding: 8px 24px;
         font-weight: bold;
         border: none;
@@ -131,9 +135,10 @@ const theme = {
       idle: css`
         background-color: #bcbcb9;
         color: #394459;
-        border-radius: 25px;
+        border-radius: 24px;
         padding: 8px 24px;
         font-weight: bold;
+        font-size: 2rem;
         border: none;
         cursor: pointer;
         transition: background-color 0.3s;

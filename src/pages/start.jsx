@@ -6,6 +6,7 @@ import {
   selectedNumberPlayersAtom,
   selectedGridSizeAtom,
 } from "../components/atoms";
+import { PrimaryButton } from "../components/styled";
 
 export default function Start() {
   const [selectedTheme, setSelectedTheme] = useAtom(selectedThemeAtom);
@@ -43,9 +44,9 @@ export default function Start() {
         <button onClick={() => handleGridSize("4")}>4x4</button>
         <button onClick={() => handleGridSize("6")}>6x6</button>
       </div>
-      <div>
-        Link to playing: <Link to="/playing">Playing</Link>
-      </div>
+      <Link to="/playing">
+        <PrimaryButton>Start Game</PrimaryButton>
+      </Link>
     </div>
   );
 }
