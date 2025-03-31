@@ -1,5 +1,17 @@
 import { css } from "@emotion/react";
 
+const baseButtonStyles = css`
+  border-radius: 24px;
+  padding: 12px 42px;
+  font-weight: bold;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  font-family: "Atkinson Hyperlegible", sans-serif;
+  transition: background-color 0.3s;
+  width: 100%;
+`;
+
 const theme = {
   colors: {
     primary: {
@@ -48,100 +60,51 @@ const theme = {
   buttons: {
     primary: {
       idle: css`
+        ${baseButtonStyles};
         background-color: #f0a214;
         color: white;
-        border-radius: 24px;
-        padding: 12px 42px;
-        font-weight: bold;
-        font-size: 2rem;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        font-family: "Atkinson Hyperlegible", sans-serif;
-        cursor: pointer;
         &:hover {
           background-color: #e59400;
         }
       `,
       hover: css`
+        ${baseButtonStyles};
         background-color: #fac061;
         color: white;
-        border-radius: 25px;
-        padding: 12px 42px;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-        font-family: "Atkinson Hyperlegible", sans-serif;
       `,
     },
     secondary: {
       idle: css`
+        ${baseButtonStyles};
         background-color: #bcbcb9;
         color: #fff;
-        border-radius: 24px;
-        padding: 12px 42px;
-        font-weight: bold;
-        font-size: 2rem;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        font-family: "Atkinson Hyperlegible", sans-serif;
       `,
       hover: css`
+        ${baseButtonStyles};
         background-color: #6395b8;
         color: white;
-        border-radius: 24px;
-        padding: 12px 42px;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-        font-family: "Atkinson Hyperlegible", sans-serif;
       `,
       active: css`
+        ${baseButtonStyles};
         background-color: #152938;
         color: #fff;
-        border-radius: 24px;
-        padding: 12px 42px;
-        font-weight: bold;
-        font-size: 2rem;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        font-family: "Atkinson Hyperlegible", sans-serif;
       `,
     },
     menu: {
       active: css`
+        ${baseButtonStyles};
         background-color: #394459;
         color: white;
-        border-radius: 24px;
-        padding: 12px 42px;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-        font-family: "Atkinson Hyperlegible", sans-serif;
       `,
       hover: css`
+        ${baseButtonStyles};
         background-color: #3979da;
         color: white;
-        border-radius: 25px;
-        padding: 12px 42px;
-        font-weight: bold;
-        border: none;
-        cursor: pointer;
-        font-family: "Atkinson Hyperlegible", sans-serif;
       `,
       idle: css`
+        ${baseButtonStyles};
         background-color: #bcbcb9;
         color: #394459;
-        border-radius: 24px;
-        padding: 12px 42px;
-        font-weight: bold;
-        font-size: 2rem;
-        border: none;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        font-family: "Atkinson Hyperlegible", sans-serif;
         &:hover {
           background-color: #a8a8a5;
         }
