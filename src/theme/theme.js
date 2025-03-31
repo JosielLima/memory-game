@@ -3,35 +3,25 @@ import { css } from "@emotion/react";
 const theme = {
   colors: {
     primary: {
-      main: "#F0A214",
-      light: "#BCBCB9",
-      dark: "#394459",
-      darker: "#152518",
+      main: "#FDA214",
+      light: "#BCCED9",
+      dark: "#304859",
+      contrast: "#152938",
     },
     secondary: {
       main: "#F2F2F2",
-      light: "#719145",
-      dark: "#3979DA",
-      darker: "#FCFCFC",
+      light: "#6395B8",
+      dark: "#7191A5",
+      contrast: "#FCFCFC",
     },
     text: {
-      primary: "#394459",
-      secondary: "#719145",
+      primary: "#152938",
+      secondary: "#7191A5",
       light: "#F2F2F2",
     },
-    rgb: {
-      primary: {
-        main: "240, 162, 20",
-        light: "188, 188, 185",
-        dark: "57, 68, 89",
-        darker: "21, 37, 24",
-      },
-      secondary: {
-        main: "242, 242, 242",
-        light: "113, 145, 69",
-        dark: "57, 121, 218",
-        darker: "252, 252, 252",
-      },
+    common: {
+      white: "#FFFFFF",
+      black: "#000000",
     },
   },
   typography: {
@@ -87,7 +77,7 @@ const theme = {
     secondary: {
       idle: css`
         background-color: #bcbcb9;
-        color: #394459;
+        color: #fff;
         border-radius: 24px;
         padding: 8px 16px;
         font-weight: bold;
@@ -96,18 +86,27 @@ const theme = {
         cursor: pointer;
         transition: background-color 0.3s;
         font-family: "Atkinson Hyperlegible", sans-serif;
-        &:hover {
-          background-color: #a8a8a5;
-        }
       `,
       hover: css`
-        background-color: #3979da;
+        background-color: #6395b8;
         color: white;
         border-radius: 24px;
         padding: 8px 16px;
         font-weight: bold;
         border: none;
         cursor: pointer;
+        font-family: "Atkinson Hyperlegible", sans-serif;
+      `,
+      active: css`
+        background-color: #152938;
+        color: #fff;
+        border-radius: 24px;
+        padding: 8px 16px;
+        font-weight: bold;
+        font-size: 2rem;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
         font-family: "Atkinson Hyperlegible", sans-serif;
       `,
     },
@@ -161,7 +160,7 @@ const theme = {
     small: "4px",
     medium: "8px",
     large: "16px",
-    pill: "25px",
+    extra: "20px",
   },
 };
 

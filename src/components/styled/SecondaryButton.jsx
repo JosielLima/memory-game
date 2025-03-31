@@ -1,7 +1,10 @@
 import styled from "@emotion/styled";
 
 const SecondaryButton = styled.button`
-  ${(props) => props.theme.buttons.secondary.idle}
+  ${(props) =>
+    props.active
+      ? props.theme.buttons.secondary.active
+      : props.theme.buttons.secondary.idle}
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {

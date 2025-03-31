@@ -6,7 +6,7 @@ import {
   selectedNumberPlayersAtom,
   selectedGridSizeAtom,
 } from "../components/atoms";
-import { PrimaryButton } from "../components/styled";
+import { PrimaryButton, SecondaryButton, Card } from "../components/styled";
 
 export default function Start() {
   const [selectedTheme, setSelectedTheme] = useAtom(selectedThemeAtom);
@@ -28,25 +28,65 @@ export default function Start() {
   };
 
   return (
-    <div>
+    <Card>
       <h1>{selectedTheme || "Select a theme"}</h1>
       <div>
-        <button onClick={() => handleTheme("numbers")}>Numbers</button>
-        <button onClick={() => handleTheme("icons")}>Icons</button>
+        <SecondaryButton
+          onClick={() => handleTheme("numbers")}
+          active={selectedTheme === "numbers"}
+        >
+          Numbers
+        </SecondaryButton>
+        <SecondaryButton
+          onClick={() => handleTheme("icons")}
+          active={selectedTheme === "icons"}
+        >
+          Icons
+        </SecondaryButton>
       </div>
       <div>
-        <button onClick={() => handleNumberPlayers("1")}>1</button>
-        <button onClick={() => handleNumberPlayers("2")}>2</button>
-        <button onClick={() => handleNumberPlayers("3")}>3</button>
-        <button onClick={() => handleNumberPlayers("4")}>4</button>
+        <SecondaryButton
+          onClick={() => handleNumberPlayers("1")}
+          active={selectedNumberPlayers === "1"}
+        >
+          1
+        </SecondaryButton>
+        <SecondaryButton
+          onClick={() => handleNumberPlayers("2")}
+          active={selectedNumberPlayers === "2"}
+        >
+          2
+        </SecondaryButton>
+        <SecondaryButton
+          onClick={() => handleNumberPlayers("3")}
+          active={selectedNumberPlayers === "3"}
+        >
+          3
+        </SecondaryButton>
+        <SecondaryButton
+          onClick={() => handleNumberPlayers("4")}
+          active={selectedNumberPlayers === "4"}
+        >
+          4
+        </SecondaryButton>
       </div>
       <div>
-        <button onClick={() => handleGridSize("4")}>4x4</button>
-        <button onClick={() => handleGridSize("6")}>6x6</button>
+        <SecondaryButton
+          onClick={() => handleGridSize("4")}
+          active={selectedGridSize === "4"}
+        >
+          4x4
+        </SecondaryButton>
+        <SecondaryButton
+          onClick={() => handleGridSize("6")}
+          active={selectedGridSize === "6"}
+        >
+          6x6
+        </SecondaryButton>
       </div>
       <Link to="/playing">
         <PrimaryButton>Start Game</PrimaryButton>
       </Link>
-    </div>
+    </Card>
   );
 }
