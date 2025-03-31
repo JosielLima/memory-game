@@ -51,7 +51,7 @@ const theme = {
         background-color: #f0a214;
         color: white;
         border-radius: 24px;
-        padding: 12px 24px;
+        padding: 12px 42px;
         font-weight: bold;
         font-size: 2rem;
         border: none;
@@ -67,7 +67,7 @@ const theme = {
         background-color: #fac061;
         color: white;
         border-radius: 25px;
-        padding: 12px 24px;
+        padding: 12px 42px;
         font-weight: bold;
         border: none;
         cursor: pointer;
@@ -79,7 +79,7 @@ const theme = {
         background-color: #bcbcb9;
         color: #fff;
         border-radius: 24px;
-        padding: 8px 16px;
+        padding: 12px 42px;
         font-weight: bold;
         font-size: 2rem;
         border: none;
@@ -91,7 +91,7 @@ const theme = {
         background-color: #6395b8;
         color: white;
         border-radius: 24px;
-        padding: 8px 16px;
+        padding: 12px 42px;
         font-weight: bold;
         border: none;
         cursor: pointer;
@@ -101,7 +101,7 @@ const theme = {
         background-color: #152938;
         color: #fff;
         border-radius: 24px;
-        padding: 8px 16px;
+        padding: 12px 42px;
         font-weight: bold;
         font-size: 2rem;
         border: none;
@@ -115,7 +115,7 @@ const theme = {
         background-color: #394459;
         color: white;
         border-radius: 24px;
-        padding: 8px 24px;
+        padding: 12px 42px;
         font-weight: bold;
         border: none;
         cursor: pointer;
@@ -125,7 +125,7 @@ const theme = {
         background-color: #3979da;
         color: white;
         border-radius: 25px;
-        padding: 8px 24px;
+        padding: 12px 42px;
         font-weight: bold;
         border: none;
         cursor: pointer;
@@ -135,7 +135,7 @@ const theme = {
         background-color: #bcbcb9;
         color: #394459;
         border-radius: 24px;
-        padding: 8px 24px;
+        padding: 12px 42px;
         font-weight: bold;
         font-size: 2rem;
         border: none;
