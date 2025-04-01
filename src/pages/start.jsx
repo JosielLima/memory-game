@@ -57,7 +57,7 @@ export default function Start() {
             padding: 2rem 0;
           `}
         >
-          <Logo />
+          <Logo light />
         </div>
         <Card>
           <div
