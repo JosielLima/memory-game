@@ -449,7 +449,7 @@ export default function Playing() {
       {gameOver && numberPlayersAtom === "1" && isModalOpen && <ModalAlone />}
 
       {gameOver && numberPlayersAtom !== "1" && isModalOpen && (
-        <ModalMorePlayers onRestart={restartGame} />
+        <ModalMorePlayers onRestart={restartGame} scores={scores} />
       )}
     </main>
   );
