@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { gameConfig } from "../components/atoms";
 import { Link } from "react-router";
-import { Logo } from "../components";
+import { ModalAlone, ModalMorePlayers, Logo } from "../components";
 import { PrimaryButton, SecondaryButton, CardFlip } from "../components/styled";
 import { css } from "@emotion/react";
 import {
@@ -31,6 +31,8 @@ export default function Playing() {
   const [gameCards, setGameCards] = useState([]);
   const [currentPlayer, setCurrentPlayer] = useState(0);
   const [scores, setScores] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [gameOver, setGameOver] = useState(false);
 
   // Array de objetos com número e ícones específicos
   const memoryCards = [
@@ -166,12 +168,22 @@ export default function Playing() {
     initializeGame();
   }, [themeAtom, gridSizeAtom, numberPlayersAtom]);
 
+  // Verificar se o jogo acabou
+  useEffect(() => {
+    if (gameCards.every((card) => card.matched)) {
+      setGameOver(true);
+      setIsModalOpen(true);
+    }
+  }, [gameCards]);
+
   // Inicializar o jogo
   const initializeGame = () => {
     // Inicializar pontuações para todos os jogadores
     const playerCount = parseInt(numberPlayersAtom) || 1;
     setScores(Array(playerCount).fill(0));
     setCurrentPlayer(0);
+    setGameOver(false);
+    setIsModalOpen(false);
 
     // Gerar cartas do jogo
     setGameCards(getGameCards());
@@ -291,6 +303,8 @@ export default function Playing() {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          width: 1100px;
+          margin: 0 auto;
           padding: ${theme.spacing.md} 0;
         `}
       >
@@ -352,7 +366,7 @@ export default function Playing() {
           justify-content: space-around;
           flex-wrap: wrap;
           gap: 1rem;
-          width: 800px;
+          width: 1100px;
           margin: 0 auto;
           margin-top: ${theme.spacing.xl};
         `}
@@ -432,6 +446,11 @@ export default function Playing() {
           </div>
         ))}
       </div>
+      {gameOver && numberPlayersAtom === "1" && isModalOpen && <ModalAlone />}
+
+      {gameOver && numberPlayersAtom !== "1" && isModalOpen && (
+        <ModalMorePlayers onRestart={restartGame} />
+      )}
     </main>
   );
 }
