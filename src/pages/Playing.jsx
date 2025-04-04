@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { gameConfig } from "../components/atoms";
+import { Link } from "react-router";
 import { Logo } from "../components";
-import { FlexLine, PrimaryButton, SecondaryButton } from "../components/styled";
+import { PrimaryButton, SecondaryButton, CardFlip } from "../components/styled";
 import { css } from "@emotion/react";
 import {
   AcademicCapIcon,
@@ -14,6 +15,7 @@ import {
   CameraIcon,
   CloudIcon,
   CreditCardIcon,
+  CubeIcon,
   FaceSmileIcon,
   FireIcon,
   GiftIcon,
@@ -148,6 +150,13 @@ export default function Playing() {
       id: 17,
       number: 17,
       icon: <MicrophoneIcon width={24} height={24} />,
+      flipped: false,
+      matched: false,
+    },
+    {
+      id: 18,
+      number: 18,
+      icon: <CubeIcon width={24} height={24} />,
       flipped: false,
       matched: false,
     },
@@ -294,9 +303,15 @@ export default function Playing() {
           `}
         >
           <PrimaryButton onClick={restartGame}>Restart</PrimaryButton>
-          <SecondaryButton as="a" href="/">
-            New Game
-          </SecondaryButton>
+          <Link
+            to="/"
+            css={css`
+              width: 100%;
+              min-width: 248px;
+            `}
+          >
+            <SecondaryButton>New Game</SecondaryButton>
+          </Link>
         </div>
       </header>
 
@@ -317,37 +332,16 @@ export default function Playing() {
           `}
         >
           {gameCards.map((card) => (
-            <div
+            <CardFlip
               key={card.id}
               onClick={() =>
                 !card.flipped && !card.matched && flipCard(card.id)
               }
-              css={(theme) => css`
-                background-color: ${card.flipped || card.matched
-                  ? theme.colors.primary.main
-                  : theme.colors.primary.dark};
-                border-radius: ${theme.borderRadius.medium};
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                aspect-ratio: 1;
-                cursor: ${card.flipped || card.matched ? "default" : "pointer"};
-                color: ${theme.colors.common.white};
-                font-weight: bold;
-                font-size: 2rem;
-                transition: all 0.3s ease;
-
-                &:hover {
-                  ${!card.flipped && !card.matched
-                    ? `background-color: ${theme.colors.primary.light};`
-                    : ""}
-                }
-              `}
+              card={card}
             >
-              {/* Mostrar conteúdo apenas se a carta estiver virada ou correspondida */}
               {(card.flipped || card.matched) &&
                 (themeAtom === "numbers" ? card.number : card.icon)}
-            </div>
+            </CardFlip>
           ))}
         </div>
       </div>
