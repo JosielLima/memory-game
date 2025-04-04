@@ -25,6 +25,7 @@ import {
   MegaphoneIcon,
   MicrophoneIcon,
 } from "@heroicons/react/24/solid";
+import theme from "../theme/theme";
 
 export default function Playing() {
   const [{ themeAtom, numberPlayersAtom, gridSizeAtom }] = useAtom(gameConfig);
@@ -37,126 +38,126 @@ export default function Playing() {
     {
       id: 1,
       number: 1,
-      icon: <AcademicCapIcon width={24} height={24} />,
+      icon: <AcademicCapIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 2,
       number: 2,
-      icon: <BanknotesIcon width={24} height={24} />,
+      icon: <BanknotesIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 3,
       number: 3,
-      icon: <BeakerIcon width={24} height={24} />,
+      icon: <BeakerIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 4,
       number: 4,
-      icon: <BugAntIcon width={24} height={24} />,
+      icon: <BugAntIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 5,
       number: 5,
-      icon: <BuildingOffice2Icon width={24} height={24} />,
+      icon: <BuildingOffice2Icon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 6,
       number: 6,
-      icon: <CakeIcon width={24} height={24} />,
+      icon: <CakeIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 7,
       number: 7,
-      icon: <CameraIcon width={24} height={24} />,
+      icon: <CameraIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 8,
       number: 8,
-      icon: <CloudIcon width={24} height={24} />,
+      icon: <CloudIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 9,
       number: 9,
-      icon: <CreditCardIcon width={24} height={24} />,
+      icon: <CreditCardIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 10,
       number: 10,
-      icon: <FaceSmileIcon width={24} height={24} />,
+      icon: <FaceSmileIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 11,
       number: 11,
-      icon: <FireIcon width={24} height={24} />,
+      icon: <FireIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 12,
       number: 12,
-      icon: <GiftIcon width={24} height={24} />,
+      icon: <GiftIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 13,
       number: 13,
-      icon: <GlobeAmericasIcon width={24} height={24} />,
+      icon: <GlobeAmericasIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 14,
       number: 14,
-      icon: <HandRaisedIcon width={24} height={24} />,
+      icon: <HandRaisedIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 15,
       number: 15,
-      icon: <KeyIcon width={24} height={24} />,
+      icon: <KeyIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 16,
       number: 16,
-      icon: <MegaphoneIcon width={24} height={24} />,
+      icon: <MegaphoneIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 17,
       number: 17,
-      icon: <MicrophoneIcon width={24} height={24} />,
+      icon: <MicrophoneIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
     {
       id: 18,
       number: 18,
-      icon: <CubeIcon width={24} height={24} />,
+      icon: <CubeIcon width={64} height={64} />,
       flipped: false,
       matched: false,
     },
@@ -282,7 +283,7 @@ export default function Playing() {
       css={(theme) => css`
         display: flex;
         flex-direction: column;
-        height: 100vh;
+        height: 80vh;
         padding: ${theme.spacing.xxl};
       `}
     >
@@ -347,49 +348,88 @@ export default function Playing() {
       </div>
 
       <div
-        css={css`
+        css={(theme) => css`
           display: flex;
           justify-content: space-around;
           flex-wrap: wrap;
           gap: 1rem;
+          width: 800px;
+          margin: 0 auto;
+          margin-top: ${theme.spacing.xl};
         `}
       >
         {/* Renderizar pontuação para cada jogador */}
         {[...Array(parseInt(numberPlayersAtom) || 1)].map((_, index) => (
           <div
             key={index}
-            css={(theme) => css`
-              padding: ${theme.spacing.md};
-              background-color: ${currentPlayer === index
-                ? theme.colors.primary.main
-                : theme.colors.secondary.main};
-              border-radius: ${theme.borderRadius.medium};
-              min-width: 120px;
-              text-align: center;
-              color: ${currentPlayer === index
-                ? theme.colors.common.white
-                : theme.colors.text.primary};
-              transition: all 0.3s ease;
+            css={css`
+              display: flex;
+              flex-direction: column;
+              align-items: center;
             `}
           >
-            <p
-              css={css`
-                margin: 0;
-                font-weight: bold;
+            <div
+              css={(theme) => css`
+                padding: ${theme.spacing.md};
+                background-color: ${currentPlayer === index
+                  ? theme.colors.primary.main
+                  : theme.colors.primary.light};
+                border-radius: ${theme.borderRadius.medium};
+                min-width: 180px;
+                text-align: center;
+                color: ${currentPlayer === index
+                  ? theme.colors.common.white
+                  : theme.colors.text.primary};
+                transition: all 0.3s ease;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+                ${currentPlayer === index
+                  ? `&:before {
+                  content: "";
+                  width: 0;
+									height: 0;
+									border-left: 30px solid transparent;
+									border-right: 30px solid transparent;
+									border-bottom: 24px solid ${theme.colors.primary.main};
+                  position: absolute;
+                  top: -10px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                }`
+                  : ""}
               `}
             >
-              Player {index + 1}
-              {currentPlayer === index && " (Current)"}
-            </p>
-            <p
-              css={css`
-                margin: 0;
-                font-size: 1.5rem;
-                font-weight: bold;
-              `}
-            >
-              {scores[index] || 0}
-            </p>
+              <p
+                css={css`
+                  margin: 0;
+                  font-weight: bold;
+                `}
+              >
+                Player {index + 1}
+              </p>
+              <p
+                css={css`
+                  margin: 0;
+                  font-size: 1.5rem;
+                  font-weight: bold;
+                `}
+              >
+                {scores[index] || 0}
+              </p>
+            </div>
+            {currentPlayer === index && (
+              <div
+                css={css`
+                  text-transform: uppercase;
+                  font-weight: bold;
+                  margin-top: 1rem;
+                `}
+              >
+                Current Turn
+              </div>
+            )}
           </div>
         ))}
       </div>
