@@ -25,7 +25,6 @@ import {
   MegaphoneIcon,
   MicrophoneIcon,
 } from "@heroicons/react/24/solid";
-import theme from "../theme/theme";
 
 export default function Playing() {
   const [{ themeAtom, numberPlayersAtom, gridSizeAtom }] = useAtom(gameConfig);
@@ -318,7 +317,7 @@ export default function Playing() {
 
       <div
         css={css`
-          width: 800px;
+          width: 600px;
           margin: 0 auto;
         `}
       >

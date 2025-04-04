@@ -3,9 +3,11 @@ import styled from "@emotion/styled";
 const CardFlip = styled.div(
   ({ card, theme }) => `
   background-color: ${
-    card.flipped || card.matched
-      ? theme.colors.primary.main
-      : theme.colors.primary.dark
+    card.matched
+      ? theme.colors.primary.light
+      : card.flipped
+        ? theme.colors.primary.main
+        : theme.colors.primary.dark
   };
   border-radius: 50%;
   display: flex;
@@ -21,7 +23,7 @@ const CardFlip = styled.div(
   &:hover {
     ${
       !card.flipped && !card.matched
-        ? `background-color: ${theme.colors.primary.light};`
+        ? `background-color: ${theme.colors.primary.main};`
         : ""
     }
   }
