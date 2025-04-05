@@ -23,7 +23,7 @@ const CardFlip = styled.div(
   &:hover {
     ${
       !card.flipped && !card.matched
-        ? `background-color: ${theme.colors.primary.main};`
+        ? `background-color: ${theme.colors.secondary.dark};`
         : ""
     }
   }

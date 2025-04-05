@@ -7,6 +7,7 @@ import theme from "../theme/theme";
 
 const ModalMorePlayers = ({ onRestart, scores }) => {
   const [ArrayResults, setArrayResults] = useState([]);
+  const [typeResult, setTypeResult] = useState("");
 
   useEffect(() => {
     const playersWithScores = scores.map((score, index) => ({
@@ -30,12 +31,14 @@ const ModalMorePlayers = ({ onRestart, scores }) => {
 
       if (winners.length === 1) {
         sortedPlayers[0].isWinner = true;
+        setTypeResult("winner");
       } else {
         winners.forEach((winner) => {
           const playerIndex = sortedPlayers.findIndex(
             (p) => p.id === winner.id,
           );
           sortedPlayers[playerIndex].isDraw = true;
+          setTypeResult("draw");
         });
       }
     }
@@ -61,6 +64,10 @@ const ModalMorePlayers = ({ onRestart, scores }) => {
         <div
           css={css`
             margin-bottom: 2rem;
+            & h2,
+            & h6 {
+              text-align: center;
+            }
           `}
         >
           <h2
@@ -68,9 +75,20 @@ const ModalMorePlayers = ({ onRestart, scores }) => {
               margin-bottom: 0;
             `}
           >
-            Player definir Wins!
+            {typeResult === "draw"
+              ? "It’s a tie!"
+              : `Player ${ArrayResults[0].name}  Wins!`}
           </h2>
-          <h6>Game over! Here are the results...</h6>
+          <h6
+            css={(theme) =>
+              css(`
+								color: ${theme.colors.primary.light};
+								font-size: 1rem;
+							`)
+            }
+          >
+            Game over! Here are the results...
+          </h6>
         </div>
         <div
           css={css`
@@ -102,7 +120,8 @@ const ModalMorePlayers = ({ onRestart, scores }) => {
               key={index}
             >
               <p>
-                {result.name} {result.isWinner ? "(Winner!)" : ""}
+                {result.name}{" "}
+                {result.isWinner || result.isDraw ? "(Winner!)" : ""}
               </p>
               <p>{result?.score || 0} Pairs</p>
             </div>

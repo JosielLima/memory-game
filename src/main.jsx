@@ -1,8 +1,8 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router";
-import Start from "./pages/Start";
 import Playing from "./pages/Playing";
+import Start from "./pages/Start";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./theme/theme";
 import GlobalStyles from "./theme/GlobalStyles";

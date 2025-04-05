@@ -170,7 +170,7 @@ export default function Playing() {
 
   // Verificar se o jogo acabou
   useEffect(() => {
-    if (gameCards.every((card) => card.matched)) {
+    if (gameCards.length > 0 && gameCards.every((card) => card.matched)) {
       setGameOver(true);
       setIsModalOpen(true);
     }
