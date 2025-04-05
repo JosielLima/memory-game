@@ -33,6 +33,8 @@ export default function Playing() {
   const [scores, setScores] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  const [moves, setMoves] = useState(0);
 
   // Array de objetos com número e ícones específicos
   const memoryCards = [
@@ -176,6 +178,15 @@ export default function Playing() {
     }
   }, [gameCards]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!gameOver) {
+        setTimeElapsed((prevTime) => prevTime + 1);
+      }
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [gameOver]);
+
   // Inicializar o jogo
   const initializeGame = () => {
     // Inicializar pontuações para todos os jogadores
@@ -184,6 +195,8 @@ export default function Playing() {
     setCurrentPlayer(0);
     setGameOver(false);
     setIsModalOpen(false);
+    setTimeElapsed(0);
+    setMoves(0);
 
     // Gerar cartas do jogo
     setGameCards(getGameCards());
@@ -209,6 +222,10 @@ export default function Playing() {
 
   // Função para virar uma carta
   const flipCard = (id) => {
+    if (parseInt(numberPlayersAtom) === 1) {
+      setMoves((prevMoves) => prevMoves + 1);
+      console.log("moves", moves);
+    }
     setGameCards((prevCards) => {
       // Encontre quantas cartas já estão viradas, mas não correspondem
       const flippedCards = prevCards.filter(
@@ -446,7 +463,13 @@ export default function Playing() {
           </div>
         ))}
       </div>
-      {gameOver && numberPlayersAtom === "1" && isModalOpen && <ModalAlone />}
+      {gameOver && numberPlayersAtom === "1" && isModalOpen && (
+        <ModalAlone
+          onRestart={restartGame}
+          moves={moves}
+          timeElapsed={timeElapsed}
+        />
+      )}
 
       {gameOver && numberPlayersAtom !== "1" && isModalOpen && (
         <ModalMorePlayers onRestart={restartGame} scores={scores} />
