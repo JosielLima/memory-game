@@ -2,7 +2,7 @@ import { css } from "@emotion/react";
 
 const baseButtonStyles = css`
   border-radius: 24px;
-  padding: 12px 42px;
+  padding: 0.9rem 2.5rem;
   font-weight: bold;
   font-size: 2rem;
   border: none;
@@ -10,6 +10,10 @@ const baseButtonStyles = css`
   font-family: "Atkinson Hyperlegible", sans-serif;
   transition: background-color 0.3s;
   width: 100%;
+  @media (max-width: 600px) {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
 `;
 
 const theme = {
@@ -124,6 +128,11 @@ const theme = {
     medium: "8px",
     large: "16px",
     extra: "20px",
+  },
+  media: {
+    mobile: "only screen and (max-width: 600px)",
+    tablet: "only screen and (min-width: 601px) and (max-width: 1024px)",
+    desktop: "only screen and (min-width: 1025px)",
   },
 };
 

@@ -46,8 +46,10 @@ export default function Start() {
       `}
     >
       <div
-        css={css`
-          max-width: 800px;
+        css={(theme) => css`
+          max-width: 600px;
+          min-width: 300px;
+          width: 100%;
         `}
       >
         <div
