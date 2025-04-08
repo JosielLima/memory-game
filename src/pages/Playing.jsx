@@ -407,35 +407,110 @@ export default function Playing() {
           }
         `}
       >
-        {/* Renderizar pontuação para cada jogador */}
-        {[...Array(parseInt(numberPlayersAtom) || 1)].map((_, index) => (
+        {parseInt(numberPlayersAtom) === 1 ? (
           <div
-            key={index}
-            css={css`
+            css={(theme) => css`
               display: flex;
-              flex-direction: column;
+              flex-direction: row;
               align-items: center;
-            `}
-          >
-            <div
-              css={(theme) => css`
-                padding: ${theme.spacing.md};
-                background-color: ${currentPlayer === index
-                  ? theme.colors.primary.main
-                  : theme.colors.primary.light};
+              justify-content: center;
+              gap: 1rem;
+              & div {
+                display: flex;
+                justify-content: space-between;
+                gap: 1rem;
+                padding: ${theme.spacing.md} ${theme.spacing.xs};
+                background-color: #dfe7ec;
                 border-radius: ${theme.borderRadius.medium};
                 min-width: 180px;
                 text-align: center;
-                color: ${currentPlayer === index
-                  ? theme.colors.common.white
-                  : theme.colors.text.primary};
+                color: ${theme.colors.common.white};
                 transition: all 0.3s ease;
+                & span {
+                  width: 50%;
+                }
+              }
+            `}
+          >
+            <div
+              css={css`
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
-                position: relative;
-                ${currentPlayer === index
-                  ? `&:before {
+              `}
+            >
+              <span
+                css={(theme) => css`
+                  font-weight: bold;
+                  color: ${theme.colors.secondary.dark};
+                `}
+              >
+                Time
+              </span>
+              <span
+                css={(theme) => css`
+                  font-weight: bold;
+                  font-size: 1.5rem;
+                  color: ${theme.colors.primary.dark};
+                `}
+              >
+                {Math.floor(timeElapsed / 60)}:
+                {String(timeElapsed % 60).padStart(2, "0")}
+              </span>
+            </div>
+            <div
+              css={css`
+                display: flex;
+                align-items: center;
+              `}
+            >
+              <span
+                css={(theme) => css`
+                  font-weight: bold;
+                  color: ${theme.colors.secondary.dark};
+                `}
+              >
+                Moves
+              </span>
+              <span
+                css={(theme) => css`
+                  font-weight: bold;
+                  font-size: 1.5rem;
+                  color: ${theme.colors.primary.dark};
+                `}
+              >
+                {moves}
+              </span>
+            </div>
+          </div>
+        ) : (
+          [...Array(parseInt(numberPlayersAtom) || 1)].map((_, index) => (
+            <div
+              key={index}
+              css={css`
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+              `}
+            >
+              <div
+                css={(theme) => css`
+                  padding: ${theme.spacing.md};
+                  background-color: ${currentPlayer === index
+                    ? theme.colors.primary.main
+                    : theme.colors.primary.light};
+                  border-radius: ${theme.borderRadius.medium};
+                  min-width: 180px;
+                  text-align: center;
+                  color: ${currentPlayer === index
+                    ? theme.colors.common.white
+                    : theme.colors.text.primary};
+                  transition: all 0.3s ease;
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+                  position: relative;
+                  ${currentPlayer === index
+                    ? `&:before {
                   content: "";
                   width: 0;
 									height: 0;
@@ -447,66 +522,67 @@ export default function Playing() {
                   left: 50%;
                   transform: translateX(-50%);
                 }`
-                  : ""}
-                @media (max-width: 600px) {
-                  min-width: 70px;
-                  flex-direction: column;
-                }
-              `}
-            >
-              <p
-                css={css`
-                  margin: 0;
-                  font-weight: bold;
-                `}
-              >
-                <span
-                  css={css`
-                    @media (max-width: 600px) {
-                      display: none;
-                    }
-                  `}
-                >
-                  Player
-                </span>
-                <span
-                  css={css`
-                    @media (min-width: 601px) {
-                      display: none;
-                    }
-                  `}
-                >
-                  P
-                </span>
-                {index + 1}
-              </p>
-              <p
-                css={css`
-                  margin: 0;
-                  font-size: 1.5rem;
-                  font-weight: bold;
-                `}
-              >
-                {scores[index] || 0}
-              </p>
-            </div>
-            {currentPlayer === index && (
-              <div
-                css={css`
-                  text-transform: uppercase;
-                  font-weight: bold;
-                  font-size: 1rem;
-                  margin-top: 1rem;
+                    : ""}
                   @media (max-width: 600px) {
-                    font-size: 0.6rem;
+                    min-width: 70px;
+                    flex-direction: column;
                   }
                 `}
               >
-                Current Turn
+                <p
+                  css={css`
+                    margin: 0;
+                    font-weight: bold;
+                  `}
+                >
+                  <span
+                    css={css`
+                      @media (max-width: 600px) {
+                        display: none;
+                      }
+                    `}
+                  >
+                    Player
+                  </span>
+                  <span
+                    css={css`
+                      @media (min-width: 601px) {
+                        display: none;
+                      }
+                    `}
+                  >
+                    P
+                  </span>
+                  {index + 1}
+                </p>
+                <p
+                  css={css`
+                    margin: 0;
+                    font-size: 1.5rem;
+                    font-weight: bold;
+                  `}
+                >
+                  {scores[index] || 0}
+                </p>
               </div>
-            )}
-          </div>
-        ))}
+              {currentPlayer === index && (
+                <div
+                  css={css`
+                    text-transform: uppercase;
+                    font-weight: bold;
+                    font-size: 1rem;
+                    margin-top: 1rem;
+                    @media (max-width: 600px) {
+                      font-size: 0.6rem;
+                    }
+                  `}
+                >
+                  Current Turn
+                </div>
+              )}
+            </div>
+          ))
+        )}
       </div>
       {gameOver && numberPlayersAtom === "1" && isModalOpen && (
         <ModalAlone
