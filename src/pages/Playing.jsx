@@ -401,6 +401,10 @@ export default function Playing() {
           min-width: 300px;
           margin: 0 auto;
           margin-top: ${theme.spacing.xl};
+          @media (max-width: 600px) {
+            gap: 0.2rem;
+            flex-wrap: nowrap;
+          }
         `}
       >
         {/* Renderizar pontuação para cada jogador */}
@@ -444,6 +448,10 @@ export default function Playing() {
                   transform: translateX(-50%);
                 }`
                   : ""}
+                @media (max-width: 600px) {
+                  min-width: 70px;
+                  flex-direction: column;
+                }
               `}
             >
               <p
@@ -452,7 +460,25 @@ export default function Playing() {
                   font-weight: bold;
                 `}
               >
-                Player {index + 1}
+                <span
+                  css={css`
+                    @media (max-width: 600px) {
+                      display: none;
+                    }
+                  `}
+                >
+                  Player
+                </span>
+                <span
+                  css={css`
+                    @media (min-width: 601px) {
+                      display: none;
+                    }
+                  `}
+                >
+                  P
+                </span>
+                {index + 1}
               </p>
               <p
                 css={css`
@@ -469,7 +495,11 @@ export default function Playing() {
                 css={css`
                   text-transform: uppercase;
                   font-weight: bold;
+                  font-size: 1rem;
                   margin-top: 1rem;
+                  @media (max-width: 600px) {
+                    font-size: 0.6rem;
+                  }
                 `}
               >
                 Current Turn
