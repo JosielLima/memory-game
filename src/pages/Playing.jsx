@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAtom } from "jotai";
 import { gameConfig } from "../components/atoms";
 import { Link } from "react-router";
-import { ModalAlone, ModalMorePlayers, Logo } from "../components";
+import { ModalAlone, ModalMorePlayers, Logo, MenuPlaying } from "../components";
 import { PrimaryButton, SecondaryButton, CardFlip } from "../components/styled";
 import { css } from "@emotion/react";
 import {
@@ -311,8 +311,10 @@ export default function Playing() {
       css={(theme) => css`
         display: flex;
         flex-direction: column;
-        height: 80vh;
         padding: ${theme.spacing.xxl};
+        @media (max-width: 600px) {
+          padding: ${theme.spacing.xs};
+        }
       `}
     >
       <header
@@ -320,7 +322,9 @@ export default function Playing() {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          width: 1100px;
+          max-width: 1100px;
+          width: 100%;
+          min-width: 300px;
           margin: 0 auto;
           padding: ${theme.spacing.md} 0;
         `}
@@ -331,6 +335,9 @@ export default function Playing() {
             display: flex;
             gap: 1rem;
             align-items: center;
+            @media (max-width: 600px) {
+              display: none;
+            }
           `}
         >
           <PrimaryButton onClick={restartGame}>Restart</PrimaryButton>
@@ -344,12 +351,18 @@ export default function Playing() {
             <SecondaryButton>New Game</SecondaryButton>
           </Link>
         </div>
+        <MenuPlaying onRestartGame={restartGame} />
       </header>
 
       <div
         css={css`
-          width: 600px;
+          width: 100%;
+          max-width: 600px;
+          min-width: 300px;
           margin: 0 auto;
+          @media (max-width: 400px) {
+            max-width: 300px;
+          }
         `}
       >
         <div
@@ -383,7 +396,9 @@ export default function Playing() {
           justify-content: space-around;
           flex-wrap: wrap;
           gap: 1rem;
-          width: 1100px;
+          max-width: 1100px;
+          width: 100%;
+          min-width: 300px;
           margin: 0 auto;
           margin-top: ${theme.spacing.xl};
         `}
